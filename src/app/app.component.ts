@@ -48,8 +48,7 @@ export class AppComponent implements OnInit {
 	// 			console.log(token)
 	// 		});
 	// 	} else if (!sessionStorage.token) {
-	// 		alert('У вас недостаточно прав')
-	// 		// Here redirect to local IP-address url of admin 
+	// 		alert('У вас недостаточно прав');
 	// 		window.location.href = GlobalConfig.ADMIN_PAGE
 	// 	}
 	// }
