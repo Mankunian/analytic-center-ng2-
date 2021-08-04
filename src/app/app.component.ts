@@ -1,46 +1,10 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
-
-@Mankunian
-Mankunian
-	/
-	slices - ng2
-1
-10
-Code
-Issues
-Pull requests
-10
-Actions
-Projects
-Wiki
-Security
-11
-Insights
-Settings
-slices - ng2 / src / app / app.component.ts /
-@Mankunian
-Mankunian Соединение с веб - сокетом сразу после того как перешлина срезы, Убрал …
-…
-Latest commit bee4748 on 29 May
-History
-1 contributor
-We found potential security vulnerabilities in your dependencies.
-Only the owner of this repository can see this message.
-
-115 lines(103 sloc)  3.55 KB
-
 import { Component, OnInit } from "@angular/core";
 import { HttpService } from './services/http.service';
 import { TabMenuComponent } from "../app/tab-menu/tab-menu.component";
 import { NavBarComponent } from "../app/nav-bar/nav-bar.component";
 import { GlobalConfig } from './global';
 import { ErrorHandlerService } from './services/error-handler.service';
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
 	selector: "app-root",
@@ -55,6 +19,8 @@ export class AppComponent implements OnInit {
 		public tabMenuComponent: TabMenuComponent,
 		public navbarComponent: NavBarComponent,
 		public errorHandler: ErrorHandlerService,
+		private route: ActivatedRoute,
+		private router: Router
 	) {
 	}
 
@@ -66,15 +32,32 @@ export class AppComponent implements OnInit {
 		sessionStorage.setItem('hostname', hostname)
 	}
 
+	// checkAccessTokenFromAdminRedirect() {
+	// 	if (window.location.search !== '') {
+	// 		let token, refreshToken, lang, appCode;
+	// 		this.route.queryParams.subscribe(params => {
+	// 			token = params['token'];
+	// 			refreshToken = params['refresh_token'];
+	// 			lang = params['lang'];
+	// 			appCode = params['appCode'];
+	// 			sessionStorage.setItem('token', token);
+	// 			sessionStorage.setItem('refresh_token', refreshToken);
+	// 			sessionStorage.setItem('lang', lang);
+	// 			sessionStorage.setItem('appCode', appCode);
+
+	// 			console.log(token)
+	// 		});
+	// 	} else if (!sessionStorage.token) {
+	// 		alert('У вас недостаточно прав')
+	// 		// Here redirect to local IP-address url of admin 
+	// 		window.location.href = GlobalConfig.ADMIN_PAGE
+	// 	}
+	// }
+
 	checkAccessTokenFromAdminRedirect() {
 		if (window.location.search !== '') {
 			let search = window.location.search.substr(7);
 			let splittedSearch = search.split('&');
-			console.log(splittedSearch)
-			console.log(splittedSearch[0])
-			console.log(splittedSearch[1])
-			console.log(splittedSearch[2])
-			console.log(splittedSearch[3])
 			let accessToken = splittedSearch[0];
 			let refreshToken = splittedSearch[1].substr(14);
 			let lang = splittedSearch[2].substr(5);
@@ -92,6 +75,7 @@ export class AppComponent implements OnInit {
 			window.location.href = GlobalConfig.ADMIN_PAGE
 		}
 	}
+
 
 	checkTokenForValidation() {
 		this.http.checkTokenValidationService().subscribe(data => {
@@ -155,16 +139,3 @@ export class AppComponent implements OnInit {
 		return dt + '/' + month + '/' + year + ' ,' + hour + ':' + minute;
 	}
 }
-© 2021 GitHub, Inc.
-	Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
