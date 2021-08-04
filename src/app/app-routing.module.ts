@@ -1,11 +1,12 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { AppComponent } from "./app.component";
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 const routes: Routes = [
-	{ path: 'main', component: NavBarComponent },
-	{ path: '', redirectTo: '/main', pathMatch: 'full' },
-	{ path: '**', redirectTo: '/main' }
+	// { path: 'main', component: AppComponent },
+	// { path: '', redirectTo: '/main', pathMatch: 'full' },
+	// { path: '**', redirectTo: '/main' }
 ];
 
 @NgModule({

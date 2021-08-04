@@ -4,6 +4,7 @@ import { TabMenuComponent } from "../app/tab-menu/tab-menu.component";
 import { NavBarComponent } from "../app/nav-bar/nav-bar.component";
 import { GlobalConfig } from './global';
 import { ErrorHandlerService } from './services/error-handler.service';
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
 	selector: "app-root",
@@ -18,6 +19,8 @@ export class AppComponent implements OnInit {
 		public tabMenuComponent: TabMenuComponent,
 		public navbarComponent: NavBarComponent,
 		public errorHandler: ErrorHandlerService,
+		private route: ActivatedRoute,
+		private router: Router
 	) {
 	}
 
@@ -28,6 +31,27 @@ export class AppComponent implements OnInit {
 		let hostname = window.location.hostname;
 		sessionStorage.setItem('hostname', hostname)
 	}
+
+	// checkAccessTokenFromAdminRedirect() {
+	// 	if (window.location.search !== '') {
+	// 		let token, refreshToken, lang, appCode;
+	// 		this.route.queryParams.subscribe(params => {
+	// 			token = params['token'];
+	// 			refreshToken = params['refresh_token'];
+	// 			lang = params['lang'];
+	// 			appCode = params['appCode'];
+	// 			sessionStorage.setItem('token', token);
+	// 			sessionStorage.setItem('refresh_token', refreshToken);
+	// 			sessionStorage.setItem('lang', lang);
+	// 			sessionStorage.setItem('appCode', appCode);
+
+	// 			console.log(token)
+	// 		});
+	// 	} else if (!sessionStorage.token) {
+	// 		alert('У вас недостаточно прав');
+	// 		window.location.href = GlobalConfig.ADMIN_PAGE
+	// 	}
+	// }
 
 	checkAccessTokenFromAdminRedirect() {
 		if (window.location.search !== '') {
@@ -50,6 +74,7 @@ export class AppComponent implements OnInit {
 			window.location.href = GlobalConfig.ADMIN_PAGE
 		}
 	}
+
 
 	checkTokenForValidation() {
 		this.http.checkTokenValidationService().subscribe(data => {
