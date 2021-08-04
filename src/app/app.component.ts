@@ -1,3 +1,40 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+
+@Mankunian
+Mankunian
+	/
+	slices - ng2
+1
+10
+Code
+Issues
+Pull requests
+10
+Actions
+Projects
+Wiki
+Security
+11
+Insights
+Settings
+slices - ng2 / src / app / app.component.ts /
+@Mankunian
+Mankunian Соединение с веб - сокетом сразу после того как перешлина срезы, Убрал …
+…
+Latest commit bee4748 on 29 May
+History
+1 contributor
+We found potential security vulnerabilities in your dependencies.
+Only the owner of this repository can see this message.
+
+115 lines(103 sloc)  3.55 KB
+
 import { Component, OnInit } from "@angular/core";
 import { HttpService } from './services/http.service';
 import { TabMenuComponent } from "../app/tab-menu/tab-menu.component";
@@ -33,6 +70,11 @@ export class AppComponent implements OnInit {
 		if (window.location.search !== '') {
 			let search = window.location.search.substr(7);
 			let splittedSearch = search.split('&');
+			console.log(splittedSearch)
+			console.log(splittedSearch[0])
+			console.log(splittedSearch[1])
+			console.log(splittedSearch[2])
+			console.log(splittedSearch[3])
 			let accessToken = splittedSearch[0];
 			let refreshToken = splittedSearch[1].substr(14);
 			let lang = splittedSearch[2].substr(5);
@@ -113,3 +155,16 @@ export class AppComponent implements OnInit {
 		return dt + '/' + month + '/' + year + ' ,' + hour + ':' + minute;
 	}
 }
+© 2021 GitHub, Inc.
+	Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Loading complete
