@@ -276,6 +276,8 @@ export class ReportsModalContentComponent {
 			this.hierarchyReportCode = GlobalConfig.HIERARCHY_REPORTS.GROUP_004
 		} else if (reportCode == '740' || reportCode == '741' || reportCode == '742' || reportCode == '743') {
 			this.hierarchyReportCode = GlobalConfig.HIERARCHY_REPORTS.GROUP_005
+		} else if (reportCode == '708') {
+			this.hierarchyReportCode = 8
 		} else {
 			this.hierarchyReportCode = GlobalConfig.HIERARCHY_REPORTS.GROUP_002
 		}
@@ -318,6 +320,8 @@ export class ReportsModalContentComponent {
 				this.hierarchyReportCode = GlobalConfig.HIERARCHY_REPORTS.GROUP_004
 			} else if (reportCode == '740' || reportCode == '741' || reportCode == '742' || reportCode == '743') {
 				this.hierarchyReportCode = GlobalConfig.HIERARCHY_REPORTS.GROUP_005
+			} else if (reportCode == '708') {
+				this.hierarchyReportCode = 8
 			} else {
 				this.hierarchyReportCode = GlobalConfig.HIERARCHY_REPORTS.GROUP_002
 			}
